@@ -24,3 +24,16 @@ module "seguridad" {
   nombre_proyecto = var.nombre_proyecto
   vpc_id          = module.red.vpc_id
 }
+module "computo" {
+  source = "./modules/computo"
+
+  nombre_proyecto   = var.nombre_proyecto
+  subnet_publica_id = module.red.subnets_publicas_ids[0]
+  subnet_privada_id = module.red.subnet_privada_id
+  sg_app_id         = module.seguridad.sg_app_id
+  sg_mongo_id       = module.seguridad.sg_mongo_id
+  key_name          = var.key_name
+  repo_url          = var.repo_url
+
+  depends_on = [module.red]
+}

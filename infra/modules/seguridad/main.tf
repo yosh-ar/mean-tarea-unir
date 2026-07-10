@@ -53,13 +53,13 @@ resource "aws_vpc_security_group_ingress_rule" "alb_http" {
   cidr_ipv4         = "0.0.0.0/0"
 }
 
-# Ingress app: puerto de la app únicamente desde el SG del ALB
-resource "aws_vpc_security_group_ingress_rule" "app_desde_alb" {
+# Ingress app: HTTP (80) únicamente desde el SG del ALB; Nginx hace proxy interno a Node
+resource "aws_vpc_security_group_ingress_rule" "app_http_desde_alb" {
   security_group_id            = aws_security_group.app.id
-  description                  = "Trafico de la app solo desde el ALB"
+  description                  = "HTTP (80) solo desde el ALB; Nginx redirige a Node en localhost"
   ip_protocol                  = "tcp"
-  from_port                    = var.puerto_app
-  to_port                      = var.puerto_app
+  from_port                    = 80
+  to_port                      = 80
   referenced_security_group_id = aws_security_group.alb.id
 }
 
@@ -80,6 +80,16 @@ resource "aws_vpc_security_group_ingress_rule" "mongo_desde_app" {
   ip_protocol                  = "tcp"
   from_port                    = var.puerto_mongo
   to_port                      = var.puerto_mongo
+  referenced_security_group_id = aws_security_group.app.id
+}
+
+# Ingress mongo: SSH (22) únicamente desde el SG de la app, para depuración vía bastión
+resource "aws_vpc_security_group_ingress_rule" "mongo_ssh_desde_app" {
+  security_group_id            = aws_security_group.mongo.id
+  description                  = "SSH administrativo solo desde la instancia de app (patron bastion)"
+  ip_protocol                  = "tcp"
+  from_port                    = 22
+  to_port                      = 22
   referenced_security_group_id = aws_security_group.app.id
 }
 

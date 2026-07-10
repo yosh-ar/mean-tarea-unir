@@ -1,0 +1,924 @@
+[0m[1mmodule.red.aws_vpc.esta: Refreshing state... [id=vpc-0bafeb3e167a768b4][0m
+[0m[1mmodule.red.aws_eip.nat: Refreshing state... [id=eipalloc-038944657c6484d1b][0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Refreshing state... [id=igw-0ab9885e17d731259][0m
+[0m[1mmodule.red.aws_subnet.privada: Refreshing state... [id=subnet-045f7cbef66fb6cd1][0m
+[0m[1mmodule.seguridad.aws_security_group.mongo: Refreshing state... [id=sg-0f7123747289df9ea][0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Refreshing state... [id=subnet-040c6f7c5cb84a489][0m
+[0m[1mmodule.seguridad.aws_security_group.alb: Refreshing state... [id=sg-0140983b538d14fea][0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Refreshing state... [id=subnet-0fc9451192b346242][0m
+[0m[1mmodule.seguridad.aws_security_group.app: Refreshing state... [id=sg-03c7aebd6bc64db57][0m
+[0m[1mmodule.red.aws_route_table.publica: Refreshing state... [id=rtb-05844acd94bfb28e3][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.mongo_todo: Refreshing state... [id=sgr-0cd23eb5454014872][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.alb_http: Refreshing state... [id=sgr-0b34ecede23fac51e][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.alb_todo: Refreshing state... [id=sgr-07b160ce240a292b1][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.app_ssh: Refreshing state... [id=sgr-002eb18091460bb90][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.app_todo: Refreshing state... [id=sgr-01f6afca6a27e07bc][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.mongo_desde_app: Refreshing state... [id=sgr-04954b0725a0f4440][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.app_http_desde_alb: Refreshing state... [id=sgr-0f558d7f1e1009604][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.mongo_ssh_desde_app: Refreshing state... [id=sgr-01f8bb5cd1d49c4c5][0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Refreshing state... [id=rtbassoc-08a387fc6c9eaec85][0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Refreshing state... [id=nat-0cea8cbfc69f65897][0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Refreshing state... [id=rtbassoc-0585537c32c218475][0m
+[0m[1mmodule.red.aws_route_table.privada: Refreshing state... [id=rtb-0eb10ba1c8ccdf21e][0m
+[0m[1mmodule.red.aws_route_table_association.privada: Refreshing state... [id=rtbassoc-0c31f684e891c47d6][0m
+[0m[1mmodule.computo.data.aws_ami.app: Reading...[0m[0m
+[0m[1mmodule.computo.data.aws_ami.app: Read complete after 1s [id=ami-0e8a118460995ddb2][0m
+[0m[1mmodule.computo.aws_instance.mongo: Refreshing state... [id=i-0c744566bd83459c1][0m
+[0m[1mmodule.computo.aws_instance.app: Refreshing state... [id=i-05453973e6bd22c04][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.computo.aws_instance.app[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_instance" "app" {
+      [31m-[0m[0m ami                                  = "ami-0e8a118460995ddb2" [90m-> null[0m[0m
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:us-east-2:473427586366:instance/i-05453973e6bd22c04" [90m-> null[0m[0m
+      [31m-[0m[0m associate_public_ip_address          = true [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                    = "us-east-2a" [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_stop                     = false [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_termination              = false [90m-> null[0m[0m
+      [31m-[0m[0m ebs_optimized                        = false [90m-> null[0m[0m
+      [31m-[0m[0m force_destroy                        = false [90m-> null[0m[0m
+      [31m-[0m[0m get_password_data                    = false [90m-> null[0m[0m
+      [31m-[0m[0m hibernation                          = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "i-05453973e6bd22c04" [90m-> null[0m[0m
+      [31m-[0m[0m instance_initiated_shutdown_behavior = "stop" [90m-> null[0m[0m
+      [31m-[0m[0m instance_state                       = "running" [90m-> null[0m[0m
+      [31m-[0m[0m instance_type                        = "t3.micro" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_address_count                   = 0 [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_addresses                       = [] [90m-> null[0m[0m
+      [31m-[0m[0m key_name                             = "devops-unir" [90m-> null[0m[0m
+      [31m-[0m[0m monitoring                           = false [90m-> null[0m[0m
+      [31m-[0m[0m placement_partition_number           = 0 [90m-> null[0m[0m
+      [31m-[0m[0m primary_network_interface_id         = "eni-01d84cf07ed122ac2" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns                          = "ip-10-0-1-200.us-east-2.compute.internal" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip                           = "10.0.1.200" [90m-> null[0m[0m
+      [31m-[0m[0m public_dns                           = "ec2-3-146-221-190.us-east-2.compute.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m public_ip                            = "3.146.221.190" [90m-> null[0m[0m
+      [31m-[0m[0m region                               = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ips                = [] [90m-> null[0m[0m
+      [31m-[0m[0m security_groups                      = [] [90m-> null[0m[0m
+      [31m-[0m[0m source_dest_check                    = true [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id                            = "subnet-040c6f7c5cb84a489" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "mean-app"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Name" = "mean-app"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tenancy                              = "default" [90m-> null[0m[0m
+      [31m-[0m[0m user_data                            = <<-EOT
+            #!/usr/bin/env bash
+            # Despliega la aplicación MEAN (backend Node + frontend estático) sobre la AMI base.
+            # Reemplaza la app de demo que trae la AMI. Valores inyectados por templatefile():
+            # mongo_ip, puerto_app, repo_url.
+            exec > /var/log/user-data.log 2>&1
+            set -x
+            
+            # Instala git para clonar el repositorio de la aplicación
+            apt-get update && apt-get install -y git
+            
+            # Clona el repositorio con el código de la aplicación
+            git clone https://github.com/yosh-ar/mean-tarea-unir.git /opt/repo
+            
+            # Instala el backend en /opt/app, reemplazando la app de demo de la AMI
+            mkdir -p /opt/app && cp -r /opt/repo/app-mean/backend/* /opt/app/
+            cd /opt/app && npm install --omit=dev
+            
+            # Publica el frontend compilado de Angular en la raíz web de Nginx
+            # (ajustar la ruta si el build de Angular genera otra estructura de carpetas)
+            mkdir -p /var/www/html && cp -r /opt/repo/app-mean/frontend/dist/*/browser/* /var/www/html/
+            
+            # Instala la configuración de Nginx del proyecto
+            cp /opt/repo/app-mean/nginx.conf /etc/nginx/sites-available/default
+            
+            # Escribe la configuración de entorno que consume el servicio 'app'
+            cat > /etc/default/app <<EOF
+            MONGO_URI=mongodb://10.0.10.45:27017/tareas
+            PORT=3000
+            EOF
+            
+            # Sobrescribe el unit de systemd para apuntar al backend real (no a la demo)
+            cat > /etc/systemd/system/app.service <<'EOF'
+            [Unit]
+            Description=Backend MEAN (Node + Express)
+            After=network.target
+            
+            [Service]
+            EnvironmentFile=/etc/default/app
+            ExecStart=/usr/bin/node /opt/app/src/index.js
+            WorkingDirectory=/opt/app
+            Restart=always
+            RestartSec=5
+            User=root
+            
+            [Install]
+            WantedBy=multi-user.target
+            EOF
+            
+            # Recarga systemd y arranca la app con la nueva configuración
+            systemctl daemon-reload
+            systemctl enable app
+            systemctl restart app
+            
+            # Valida la configuración de Nginx antes de reiniciarlo
+            nginx -t
+            systemctl restart nginx
+        EOT [90m-> null[0m[0m
+      [31m-[0m[0m user_data_replace_on_change          = false [90m-> null[0m[0m
+      [31m-[0m[0m vpc_security_group_ids               = [
+          [31m-[0m[0m "sg-03c7aebd6bc64db57",
+        ] [90m-> null[0m[0m
+        [90m# (8 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m capacity_reservation_specification {
+          [31m-[0m[0m capacity_reservation_preference = "open" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m cpu_options {
+          [31m-[0m[0m core_count            = 1 [90m-> null[0m[0m
+          [31m-[0m[0m threads_per_core      = 2 [90m-> null[0m[0m
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+
+      [31m-[0m[0m credit_specification {
+          [31m-[0m[0m cpu_credits = "unlimited" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m enclave_options {
+          [31m-[0m[0m enabled = false [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m maintenance_options {
+          [31m-[0m[0m auto_recovery = "default" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m metadata_options {
+          [31m-[0m[0m http_endpoint               = "enabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_protocol_ipv6          = "disabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_put_response_hop_limit = 1 [90m-> null[0m[0m
+          [31m-[0m[0m http_tokens                 = "optional" [90m-> null[0m[0m
+          [31m-[0m[0m instance_metadata_tags      = "disabled" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m primary_network_interface {
+          [31m-[0m[0m delete_on_termination = true [90m-> null[0m[0m
+          [31m-[0m[0m network_interface_id  = "eni-01d84cf07ed122ac2" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m private_dns_name_options {
+          [31m-[0m[0m enable_resource_name_dns_a_record    = false [90m-> null[0m[0m
+          [31m-[0m[0m enable_resource_name_dns_aaaa_record = false [90m-> null[0m[0m
+          [31m-[0m[0m hostname_type                        = "ip-name" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m root_block_device {
+          [31m-[0m[0m delete_on_termination = true [90m-> null[0m[0m
+          [31m-[0m[0m device_name           = "/dev/sda1" [90m-> null[0m[0m
+          [31m-[0m[0m encrypted             = false [90m-> null[0m[0m
+          [31m-[0m[0m iops                  = 100 [90m-> null[0m[0m
+          [31m-[0m[0m tags                  = {} [90m-> null[0m[0m
+          [31m-[0m[0m tags_all              = {} [90m-> null[0m[0m
+          [31m-[0m[0m throughput            = 0 [90m-> null[0m[0m
+          [31m-[0m[0m volume_id             = "vol-003cd8ee2826ecd83" [90m-> null[0m[0m
+          [31m-[0m[0m volume_size           = 8 [90m-> null[0m[0m
+          [31m-[0m[0m volume_type           = "gp2" [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+    }
+
+[1m  # module.computo.aws_instance.mongo[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_instance" "mongo" {
+      [31m-[0m[0m ami                                  = "ami-0e8a118460995ddb2" [90m-> null[0m[0m
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:us-east-2:473427586366:instance/i-0c744566bd83459c1" [90m-> null[0m[0m
+      [31m-[0m[0m associate_public_ip_address          = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                    = "us-east-2a" [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_stop                     = false [90m-> null[0m[0m
+      [31m-[0m[0m disable_api_termination              = false [90m-> null[0m[0m
+      [31m-[0m[0m ebs_optimized                        = false [90m-> null[0m[0m
+      [31m-[0m[0m force_destroy                        = false [90m-> null[0m[0m
+      [31m-[0m[0m get_password_data                    = false [90m-> null[0m[0m
+      [31m-[0m[0m hibernation                          = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "i-0c744566bd83459c1" [90m-> null[0m[0m
+      [31m-[0m[0m instance_initiated_shutdown_behavior = "stop" [90m-> null[0m[0m
+      [31m-[0m[0m instance_state                       = "running" [90m-> null[0m[0m
+      [31m-[0m[0m instance_type                        = "t3.micro" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_address_count                   = 0 [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_addresses                       = [] [90m-> null[0m[0m
+      [31m-[0m[0m key_name                             = "devops-unir" [90m-> null[0m[0m
+      [31m-[0m[0m monitoring                           = false [90m-> null[0m[0m
+      [31m-[0m[0m placement_partition_number           = 0 [90m-> null[0m[0m
+      [31m-[0m[0m primary_network_interface_id         = "eni-08cdb6fc89234c481" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns                          = "ip-10-0-10-45.us-east-2.compute.internal" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip                           = "10.0.10.45" [90m-> null[0m[0m
+      [31m-[0m[0m region                               = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ips                = [] [90m-> null[0m[0m
+      [31m-[0m[0m security_groups                      = [] [90m-> null[0m[0m
+      [31m-[0m[0m source_dest_check                    = true [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id                            = "subnet-045f7cbef66fb6cd1" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "mean-mongo"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Name" = "mean-mongo"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tenancy                              = "default" [90m-> null[0m[0m
+      [31m-[0m[0m user_data                            = <<-EOT
+            #!/usr/bin/env bash
+            # Provisiona MongoDB 8.0 sobre Ubuntu 22.04 (jammy) en el primer arranque.
+            exec > /var/log/user-data.log 2>&1
+            set -x
+            
+            # Actualiza los índices de paquetes antes de instalar nada
+            apt-get update
+            
+            # Instala las dependencias necesarias para importar la clave y el repositorio
+            apt-get install -y gnupg curl
+            
+            # Importa la clave GPG oficial de MongoDB 8.0
+            curl -fsSL https://pgp.mongodb.com/server-8.0.asc \
+              | gpg --dearmor -o /usr/share/keyrings/mongodb-server-8.0.gpg
+            
+            # Registra el repositorio de MongoDB 8.0 para jammy, firmado con la clave anterior
+            echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse" \
+              > /etc/apt/sources.list.d/mongodb-org-8.0.list
+            
+            # Actualiza índices e instala MongoDB
+            apt-get update
+            apt-get install -y mongodb-org
+            
+            # Habilita la escucha en todas las interfaces (la red ya restringe el acceso al SG de la app)
+            sed -i 's/^\( *bindIp:\).*/\1 0.0.0.0/' /etc/mongod.conf
+            
+            # Arranca y habilita el servicio de MongoDB
+            systemctl enable --now mongod
+        EOT [90m-> null[0m[0m
+      [31m-[0m[0m user_data_replace_on_change          = false [90m-> null[0m[0m
+      [31m-[0m[0m vpc_security_group_ids               = [
+          [31m-[0m[0m "sg-0f7123747289df9ea",
+        ] [90m-> null[0m[0m
+        [90m# (10 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m capacity_reservation_specification {
+          [31m-[0m[0m capacity_reservation_preference = "open" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m cpu_options {
+          [31m-[0m[0m core_count            = 1 [90m-> null[0m[0m
+          [31m-[0m[0m threads_per_core      = 2 [90m-> null[0m[0m
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+
+      [31m-[0m[0m credit_specification {
+          [31m-[0m[0m cpu_credits = "unlimited" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m enclave_options {
+          [31m-[0m[0m enabled = false [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m maintenance_options {
+          [31m-[0m[0m auto_recovery = "default" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m metadata_options {
+          [31m-[0m[0m http_endpoint               = "enabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_protocol_ipv6          = "disabled" [90m-> null[0m[0m
+          [31m-[0m[0m http_put_response_hop_limit = 1 [90m-> null[0m[0m
+          [31m-[0m[0m http_tokens                 = "optional" [90m-> null[0m[0m
+          [31m-[0m[0m instance_metadata_tags      = "disabled" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m primary_network_interface {
+          [31m-[0m[0m delete_on_termination = true [90m-> null[0m[0m
+          [31m-[0m[0m network_interface_id  = "eni-08cdb6fc89234c481" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m private_dns_name_options {
+          [31m-[0m[0m enable_resource_name_dns_a_record    = false [90m-> null[0m[0m
+          [31m-[0m[0m enable_resource_name_dns_aaaa_record = false [90m-> null[0m[0m
+          [31m-[0m[0m hostname_type                        = "ip-name" [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m root_block_device {
+          [31m-[0m[0m delete_on_termination = true [90m-> null[0m[0m
+          [31m-[0m[0m device_name           = "/dev/sda1" [90m-> null[0m[0m
+          [31m-[0m[0m encrypted             = false [90m-> null[0m[0m
+          [31m-[0m[0m iops                  = 100 [90m-> null[0m[0m
+          [31m-[0m[0m tags                  = {} [90m-> null[0m[0m
+          [31m-[0m[0m tags_all              = {} [90m-> null[0m[0m
+          [31m-[0m[0m throughput            = 0 [90m-> null[0m[0m
+          [31m-[0m[0m volume_id             = "vol-03583f47ec3a08823" [90m-> null[0m[0m
+          [31m-[0m[0m volume_size           = 8 [90m-> null[0m[0m
+          [31m-[0m[0m volume_type           = "gp2" [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+    }
+
+[1m  # module.red.aws_eip.nat[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_eip" "nat" {
+      [31m-[0m[0m allocation_id            = "eipalloc-038944657c6484d1b" [90m-> null[0m[0m
+      [31m-[0m[0m arn                      = "arn:aws:ec2:us-east-2:473427586366:elastic-ip/eipalloc-038944657c6484d1b" [90m-> null[0m[0m
+      [31m-[0m[0m association_id           = "eipassoc-06e8e172983e76bd4" [90m-> null[0m[0m
+      [31m-[0m[0m domain                   = "vpc" [90m-> null[0m[0m
+      [31m-[0m[0m id                       = "eipalloc-038944657c6484d1b" [90m-> null[0m[0m
+      [31m-[0m[0m network_border_group     = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m network_interface        = "eni-0f3947efb5e939061" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns              = "ip-10-0-1-214.us-east-2.compute.internal" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip               = "10.0.1.214" [90m-> null[0m[0m
+      [31m-[0m[0m public_dns               = "ec2-3-141-206-128.us-east-2.compute.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m public_ip                = "3.141.206.128" [90m-> null[0m[0m
+      [31m-[0m[0m public_ipv4_pool         = "amazon" [90m-> null[0m[0m
+      [31m-[0m[0m region                   = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                     = {
+          [31m-[0m[0m "Name" = "mean-eip-nat"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                 = {
+          [31m-[0m[0m "Name" = "mean-eip-nat"
+        } [90m-> null[0m[0m
+        [90m# (6 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_internet_gateway.esta[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_internet_gateway" "esta" {
+      [31m-[0m[0m arn      = "arn:aws:ec2:us-east-2:473427586366:internet-gateway/igw-0ab9885e17d731259" [90m-> null[0m[0m
+      [31m-[0m[0m id       = "igw-0ab9885e17d731259" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m region   = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags     = {
+          [31m-[0m[0m "Name" = "mean-igw"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all = {
+          [31m-[0m[0m "Name" = "mean-igw"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id   = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+    }
+
+[1m  # module.red.aws_nat_gateway.esta[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_nat_gateway" "esta" {
+      [31m-[0m[0m allocation_id                      = "eipalloc-038944657c6484d1b" [90m-> null[0m[0m
+      [31m-[0m[0m association_id                     = "eipassoc-06e8e172983e76bd4" [90m-> null[0m[0m
+      [31m-[0m[0m availability_mode                  = "zonal" [90m-> null[0m[0m
+      [31m-[0m[0m connectivity_type                  = "public" [90m-> null[0m[0m
+      [31m-[0m[0m id                                 = "nat-0cea8cbfc69f65897" [90m-> null[0m[0m
+      [31m-[0m[0m network_interface_id               = "eni-0f3947efb5e939061" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip                         = "10.0.1.214" [90m-> null[0m[0m
+      [31m-[0m[0m public_ip                          = "3.141.206.128" [90m-> null[0m[0m
+      [31m-[0m[0m region                             = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m regional_nat_gateway_address       = [] [90m-> null[0m[0m
+      [31m-[0m[0m secondary_allocation_ids           = [] [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ip_address_count = 0 [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ip_addresses     = [] [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id                          = "subnet-040c6f7c5cb84a489" [90m-> null[0m[0m
+      [31m-[0m[0m tags                               = {
+          [31m-[0m[0m "Name" = "mean-nat"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                           = {
+          [31m-[0m[0m "Name" = "mean-nat"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                             = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+    }
+
+[1m  # module.red.aws_route_table.privada[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table" "privada" {
+      [31m-[0m[0m arn              = "arn:aws:ec2:us-east-2:473427586366:route-table/rtb-0eb10ba1c8ccdf21e" [90m-> null[0m[0m
+      [31m-[0m[0m id               = "rtb-0eb10ba1c8ccdf21e" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id         = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m propagating_vgws = [] [90m-> null[0m[0m
+      [31m-[0m[0m region           = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route            = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_block                 = "0.0.0.0/0"
+              [31m-[0m[0m nat_gateway_id             = "nat-0cea8cbfc69f65897"
+                [90m# (12 unchanged attributes hidden)[0m[0m
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m tags             = {
+          [31m-[0m[0m "Name" = "mean-rt-privada"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all         = {
+          [31m-[0m[0m "Name" = "mean-rt-privada"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id           = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+    }
+
+[1m  # module.red.aws_route_table.publica[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table" "publica" {
+      [31m-[0m[0m arn              = "arn:aws:ec2:us-east-2:473427586366:route-table/rtb-05844acd94bfb28e3" [90m-> null[0m[0m
+      [31m-[0m[0m id               = "rtb-05844acd94bfb28e3" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id         = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m propagating_vgws = [] [90m-> null[0m[0m
+      [31m-[0m[0m region           = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route            = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_block                 = "0.0.0.0/0"
+              [31m-[0m[0m gateway_id                 = "igw-0ab9885e17d731259"
+                [90m# (12 unchanged attributes hidden)[0m[0m
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m tags             = {
+          [31m-[0m[0m "Name" = "mean-rt-publica"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all         = {
+          [31m-[0m[0m "Name" = "mean-rt-publica"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id           = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+    }
+
+[1m  # module.red.aws_route_table_association.privada[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "privada" {
+      [31m-[0m[0m id             = "rtbassoc-0c31f684e891c47d6" [90m-> null[0m[0m
+      [31m-[0m[0m region         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-0eb10ba1c8ccdf21e" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-045f7cbef66fb6cd1" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_route_table_association.publicas[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "publicas" {
+      [31m-[0m[0m id             = "rtbassoc-08a387fc6c9eaec85" [90m-> null[0m[0m
+      [31m-[0m[0m region         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-05844acd94bfb28e3" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-040c6f7c5cb84a489" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_route_table_association.publicas[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "publicas" {
+      [31m-[0m[0m id             = "rtbassoc-0585537c32c218475" [90m-> null[0m[0m
+      [31m-[0m[0m region         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-05844acd94bfb28e3" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-0fc9451192b346242" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_subnet.privada[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "privada" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:us-east-2:473427586366:subnet/subnet-045f7cbef66fb6cd1" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "us-east-2a" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "use2-az1" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.10.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-045f7cbef66fb6cd1" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = false [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m region                                         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "mean-privada"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "mean-privada"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_subnet.publicas[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "publicas" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:us-east-2:473427586366:subnet/subnet-040c6f7c5cb84a489" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "us-east-2a" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "use2-az1" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.1.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-040c6f7c5cb84a489" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = true [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m region                                         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "mean-publica-1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "mean-publica-1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_subnet.publicas[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "publicas" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:us-east-2:473427586366:subnet/subnet-0fc9451192b346242" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "us-east-2b" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "use2-az2" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.2.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-0fc9451192b346242" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = true [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m region                                         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "mean-publica-2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "mean-publica-2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_vpc.esta[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc" "esta" {
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:us-east-2:473427586366:vpc/vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+      [31m-[0m[0m assign_generated_ipv6_cidr_block     = false [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                           = "10.0.0.0/16" [90m-> null[0m[0m
+      [31m-[0m[0m default_network_acl_id               = "acl-0d51fa0e889bfa590" [90m-> null[0m[0m
+      [31m-[0m[0m default_route_table_id               = "rtb-0ebf95ba676cfd3f0" [90m-> null[0m[0m
+      [31m-[0m[0m default_security_group_id            = "sg-02063a27605243ea5" [90m-> null[0m[0m
+      [31m-[0m[0m dhcp_options_id                      = "dopt-02718ab1ff04574a7" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_hostnames                 = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_support                   = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_network_address_usage_metrics = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+      [31m-[0m[0m instance_tenancy                     = "default" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_netmask_length                  = 0 [90m-> null[0m[0m
+      [31m-[0m[0m main_route_table_id                  = "rtb-0ebf95ba676cfd3f0" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                             = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m region                               = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "mean-vpc"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Name" = "mean-vpc"
+        } [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.seguridad.aws_security_group.alb[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_security_group" "alb" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:us-east-2:473427586366:security-group/sg-0140983b538d14fea" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "SG del ALB: permite HTTP entrante desde Internet" [90m-> null[0m[0m
+      [31m-[0m[0m egress                 = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "Salida sin restriccion"
+              [31m-[0m[0m from_port        = 0
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "-1"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 0
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sg-0140983b538d14fea" [90m-> null[0m[0m
+      [31m-[0m[0m ingress                = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "HTTP entrante desde Internet"
+              [31m-[0m[0m from_port        = 80
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 80
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m name                   = "mean-sg-alb-af1dbd136594e5b18c6ba1c5b4" [90m-> null[0m[0m
+      [31m-[0m[0m name_prefix            = "mean-sg-alb-" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id               = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m region                 = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m revoke_rules_on_delete = false [90m-> null[0m[0m
+      [31m-[0m[0m tags                   = {
+          [31m-[0m[0m "Name" = "mean-sg-alb"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Name" = "mean-sg-alb"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                 = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_security_group.app[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_security_group" "app" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:us-east-2:473427586366:security-group/sg-03c7aebd6bc64db57" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "SG de la app: recibe trafico desde el ALB y SSH de administracion" [90m-> null[0m[0m
+      [31m-[0m[0m egress                 = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "Salida sin restriccion"
+              [31m-[0m[0m from_port        = 0
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "-1"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 0
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sg-03c7aebd6bc64db57" [90m-> null[0m[0m
+      [31m-[0m[0m ingress                = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "SSH de administracion. En produccion restringir cidr_ssh."
+              [31m-[0m[0m from_port        = 22
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 22
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "HTTP (80) solo desde el ALB; Nginx redirige a Node en localhost"
+              [31m-[0m[0m from_port        = 80
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = [
+                  [31m-[0m[0m "sg-0140983b538d14fea",
+                ]
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 80
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m name                   = "mean-sg-app-b2162f2e3ebfb28e40f4a1e691" [90m-> null[0m[0m
+      [31m-[0m[0m name_prefix            = "mean-sg-app-" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id               = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m region                 = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m revoke_rules_on_delete = false [90m-> null[0m[0m
+      [31m-[0m[0m tags                   = {
+          [31m-[0m[0m "Name" = "mean-sg-app"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Name" = "mean-sg-app"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                 = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_security_group.mongo[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_security_group" "mongo" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:us-east-2:473427586366:security-group/sg-0f7123747289df9ea" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "SG de MongoDB: recibe trafico solo desde la app" [90m-> null[0m[0m
+      [31m-[0m[0m egress                 = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = [
+                  [31m-[0m[0m "0.0.0.0/0",
+                ]
+              [31m-[0m[0m description      = "Salida sin restriccion"
+              [31m-[0m[0m from_port        = 0
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "-1"
+              [31m-[0m[0m security_groups  = []
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 0
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sg-0f7123747289df9ea" [90m-> null[0m[0m
+      [31m-[0m[0m ingress                = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "SSH administrativo solo desde la instancia de app (patron bastion)"
+              [31m-[0m[0m from_port        = 22
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = [
+                  [31m-[0m[0m "sg-03c7aebd6bc64db57",
+                ]
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 22
+            },
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_blocks      = []
+              [31m-[0m[0m description      = "Trafico de MongoDB solo desde la app"
+              [31m-[0m[0m from_port        = 27017
+              [31m-[0m[0m ipv6_cidr_blocks = []
+              [31m-[0m[0m prefix_list_ids  = []
+              [31m-[0m[0m protocol         = "tcp"
+              [31m-[0m[0m security_groups  = [
+                  [31m-[0m[0m "sg-03c7aebd6bc64db57",
+                ]
+              [31m-[0m[0m self             = false
+              [31m-[0m[0m to_port          = 27017
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m name                   = "mean-sg-mongo-f91ba03ac9f6bce4c5fcdcb648" [90m-> null[0m[0m
+      [31m-[0m[0m name_prefix            = "mean-sg-mongo-" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id               = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m region                 = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m revoke_rules_on_delete = false [90m-> null[0m[0m
+      [31m-[0m[0m tags                   = {
+          [31m-[0m[0m "Name" = "mean-sg-mongo"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {
+          [31m-[0m[0m "Name" = "mean-sg-mongo"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                 = "vpc-0bafeb3e167a768b4" [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_vpc_security_group_egress_rule.alb_todo[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_egress_rule" "alb_todo" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:us-east-2:473427586366:security-group-rule/sgr-07b160ce240a292b1" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_ipv4              = "0.0.0.0/0" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "Salida sin restriccion" [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sgr-07b160ce240a292b1" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol            = "-1" [90m-> null[0m[0m
+      [31m-[0m[0m region                 = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id      = "sg-0140983b538d14fea" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id = "sgr-07b160ce240a292b1" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {} [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_vpc_security_group_egress_rule.app_todo[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_egress_rule" "app_todo" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:us-east-2:473427586366:security-group-rule/sgr-01f6afca6a27e07bc" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_ipv4              = "0.0.0.0/0" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "Salida sin restriccion" [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sgr-01f6afca6a27e07bc" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol            = "-1" [90m-> null[0m[0m
+      [31m-[0m[0m region                 = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id      = "sg-03c7aebd6bc64db57" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id = "sgr-01f6afca6a27e07bc" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {} [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_vpc_security_group_egress_rule.mongo_todo[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_egress_rule" "mongo_todo" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:us-east-2:473427586366:security-group-rule/sgr-0cd23eb5454014872" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_ipv4              = "0.0.0.0/0" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "Salida sin restriccion" [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sgr-0cd23eb5454014872" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol            = "-1" [90m-> null[0m[0m
+      [31m-[0m[0m region                 = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id      = "sg-0f7123747289df9ea" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id = "sgr-0cd23eb5454014872" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {} [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_vpc_security_group_ingress_rule.alb_http[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "alb_http" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:us-east-2:473427586366:security-group-rule/sgr-0b34ecede23fac51e" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_ipv4              = "0.0.0.0/0" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "HTTP entrante desde Internet" [90m-> null[0m[0m
+      [31m-[0m[0m from_port              = 80 [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sgr-0b34ecede23fac51e" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol            = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m region                 = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id      = "sg-0140983b538d14fea" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id = "sgr-0b34ecede23fac51e" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {} [90m-> null[0m[0m
+      [31m-[0m[0m to_port                = 80 [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_vpc_security_group_ingress_rule.app_http_desde_alb[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "app_http_desde_alb" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:us-east-2:473427586366:security-group-rule/sgr-0f558d7f1e1009604" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "HTTP (80) solo desde el ALB; Nginx redirige a Node en localhost" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 80 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-0f558d7f1e1009604" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-0140983b538d14fea" [90m-> null[0m[0m
+      [31m-[0m[0m region                       = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-03c7aebd6bc64db57" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-0f558d7f1e1009604" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {} [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 80 [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_vpc_security_group_ingress_rule.app_ssh[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "app_ssh" {
+      [31m-[0m[0m arn                    = "arn:aws:ec2:us-east-2:473427586366:security-group-rule/sgr-002eb18091460bb90" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_ipv4              = "0.0.0.0/0" [90m-> null[0m[0m
+      [31m-[0m[0m description            = "SSH de administracion. En produccion restringir cidr_ssh." [90m-> null[0m[0m
+      [31m-[0m[0m from_port              = 22 [90m-> null[0m[0m
+      [31m-[0m[0m id                     = "sgr-002eb18091460bb90" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol            = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m region                 = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id      = "sg-03c7aebd6bc64db57" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id = "sgr-002eb18091460bb90" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all               = {} [90m-> null[0m[0m
+      [31m-[0m[0m to_port                = 22 [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_vpc_security_group_ingress_rule.mongo_desde_app[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "mongo_desde_app" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:us-east-2:473427586366:security-group-rule/sgr-04954b0725a0f4440" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "Trafico de MongoDB solo desde la app" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 27017 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-04954b0725a0f4440" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-03c7aebd6bc64db57" [90m-> null[0m[0m
+      [31m-[0m[0m region                       = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-0f7123747289df9ea" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-04954b0725a0f4440" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {} [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 27017 [90m-> null[0m[0m
+    }
+
+[1m  # module.seguridad.aws_vpc_security_group_ingress_rule.mongo_ssh_desde_app[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc_security_group_ingress_rule" "mongo_ssh_desde_app" {
+      [31m-[0m[0m arn                          = "arn:aws:ec2:us-east-2:473427586366:security-group-rule/sgr-01f8bb5cd1d49c4c5" [90m-> null[0m[0m
+      [31m-[0m[0m description                  = "SSH administrativo solo desde la instancia de app (patron bastion)" [90m-> null[0m[0m
+      [31m-[0m[0m from_port                    = 22 [90m-> null[0m[0m
+      [31m-[0m[0m id                           = "sgr-01f8bb5cd1d49c4c5" [90m-> null[0m[0m
+      [31m-[0m[0m ip_protocol                  = "tcp" [90m-> null[0m[0m
+      [31m-[0m[0m referenced_security_group_id = "sg-03c7aebd6bc64db57" [90m-> null[0m[0m
+      [31m-[0m[0m region                       = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_id            = "sg-0f7123747289df9ea" [90m-> null[0m[0m
+      [31m-[0m[0m security_group_rule_id       = "sgr-01f8bb5cd1d49c4c5" [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                     = {} [90m-> null[0m[0m
+      [31m-[0m[0m to_port                      = 22 [90m-> null[0m[0m
+    }
+
+[1mPlan:[0m [0m0 to add, 0 to change, 25 to destroy.
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.mongo_ssh_desde_app: Destroying... [id=sgr-01f8bb5cd1d49c4c5][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.app_http_desde_alb: Destroying... [id=sgr-0f558d7f1e1009604][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.app_ssh: Destroying... [id=sgr-002eb18091460bb90][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.alb_http: Destroying... [id=sgr-0b34ecede23fac51e][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.mongo_todo: Destroying... [id=sgr-0cd23eb5454014872][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.mongo_desde_app: Destroying... [id=sgr-04954b0725a0f4440][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.alb_todo: Destroying... [id=sgr-07b160ce240a292b1][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.app_todo: Destroying... [id=sgr-01f6afca6a27e07bc][0m[0m
+[0m[1mmodule.computo.aws_instance.app: Destroying... [id=i-05453973e6bd22c04][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.mongo_todo: Destruction complete after 0s[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.alb_http: Destruction complete after 0s[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.mongo_desde_app: Destruction complete after 0s[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.app_http_desde_alb: Destruction complete after 0s[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.alb_todo: Destruction complete after 0s[0m
+[0m[1mmodule.seguridad.aws_security_group.alb: Destroying... [id=sg-0140983b538d14fea][0m[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.app_todo: Destruction complete after 0s[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.mongo_ssh_desde_app: Destruction complete after 0s[0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.app_ssh: Destruction complete after 0s[0m
+[0m[1mmodule.seguridad.aws_security_group.alb: Destruction complete after 1s[0m
+[0m[1mmodule.computo.aws_instance.app: Still destroying... [id=i-05453973e6bd22c04, 00m10s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.app: Still destroying... [id=i-05453973e6bd22c04, 00m20s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.app: Still destroying... [id=i-05453973e6bd22c04, 00m30s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.app: Still destroying... [id=i-05453973e6bd22c04, 00m40s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.app: Still destroying... [id=i-05453973e6bd22c04, 00m50s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.app: Still destroying... [id=i-05453973e6bd22c04, 01m00s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.app: Still destroying... [id=i-05453973e6bd22c04, 01m10s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.app: Destruction complete after 1m11s[0m
+[0m[1mmodule.seguridad.aws_security_group.app: Destroying... [id=sg-03c7aebd6bc64db57][0m[0m
+[0m[1mmodule.computo.aws_instance.mongo: Destroying... [id=i-0c744566bd83459c1][0m[0m
+[0m[1mmodule.seguridad.aws_security_group.app: Destruction complete after 1s[0m
+[0m[1mmodule.computo.aws_instance.mongo: Still destroying... [id=i-0c744566bd83459c1, 00m10s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.mongo: Still destroying... [id=i-0c744566bd83459c1, 00m20s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.mongo: Still destroying... [id=i-0c744566bd83459c1, 00m30s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.mongo: Still destroying... [id=i-0c744566bd83459c1, 00m40s elapsed][0m[0m
+[0m[1mmodule.computo.aws_instance.mongo: Destruction complete after 40s[0m
+[0m[1mmodule.red.aws_route_table_association.privada: Destroying... [id=rtbassoc-0c31f684e891c47d6][0m[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Destroying... [id=rtbassoc-08a387fc6c9eaec85][0m[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Destroying... [id=rtbassoc-0585537c32c218475][0m[0m
+[0m[1mmodule.seguridad.aws_security_group.mongo: Destroying... [id=sg-0f7123747289df9ea][0m[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Destruction complete after 0s[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Destruction complete after 0s[0m
+[0m[1mmodule.red.aws_route_table.publica: Destroying... [id=rtb-05844acd94bfb28e3][0m[0m
+[0m[1mmodule.red.aws_route_table_association.privada: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_route_table.privada: Destroying... [id=rtb-0eb10ba1c8ccdf21e][0m[0m
+[0m[1mmodule.red.aws_subnet.privada: Destroying... [id=subnet-045f7cbef66fb6cd1][0m[0m
+[0m[1mmodule.seguridad.aws_security_group.mongo: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_subnet.privada: Destruction complete after 0s[0m
+[0m[1mmodule.red.aws_route_table.publica: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_route_table.privada: Destruction complete after 0s[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Destroying... [id=nat-0cea8cbfc69f65897][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0cea8cbfc69f65897, 00m10s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0cea8cbfc69f65897, 00m20s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0cea8cbfc69f65897, 00m30s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0cea8cbfc69f65897, 00m40s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0cea8cbfc69f65897, 00m50s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Destruction complete after 52s[0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Destroying... [id=igw-0ab9885e17d731259][0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Destroying... [id=subnet-0fc9451192b346242][0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Destroying... [id=subnet-040c6f7c5cb84a489][0m[0m
+[0m[1mmodule.red.aws_eip.nat: Destroying... [id=eipalloc-038944657c6484d1b][0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Destruction complete after 0s[0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Destruction complete after 0s[0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_vpc.esta: Destroying... [id=vpc-0bafeb3e167a768b4][0m[0m
+[0m[1mmodule.red.aws_eip.nat: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_vpc.esta: Destruction complete after 0s[0m
+[0m[1m[32m
+Destroy complete! Resources: 25 destroyed.[0m

@@ -1,0 +1,4 @@
+=== ifconfig.me desde MongoDB (subred privada, sin IP publica) ===
+3.141.206.128
+=== IP publica del NAT gateway segun terraform ===
+    public_ip                          = "3.141.206.128"

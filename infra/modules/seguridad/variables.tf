@@ -10,13 +10,6 @@ variable "vpc_id" {
   type        = string
 }
 
-# Puerto en el que escucha la aplicación
-variable "puerto_app" {
-  description = "Puerto de escucha de la aplicación"
-  type        = number
-  default     = 3000
-}
-
 # Puerto en el que escucha MongoDB
 variable "puerto_mongo" {
   description = "Puerto de escucha de MongoDB"

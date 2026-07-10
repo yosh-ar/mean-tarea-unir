@@ -3,6 +3,9 @@
 exec > /var/log/user-data.log 2>&1
 set -x
 
+# Actualiza los índices de paquetes antes de instalar nada
+apt-get update
+
 # Instala las dependencias necesarias para importar la clave y el repositorio
 apt-get install -y gnupg curl
 

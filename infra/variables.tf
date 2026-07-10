@@ -9,3 +9,13 @@ variable "nombre_proyecto" {
   type        = string
   default     = "mean"
 }
+variable "repo_url" {
+  description = "URL publica del repositorio con la app MEAN"
+  type        = string
+  default     = "https://github.com/yosh-ar/mean-tarea-unir.git"
+}
+variable "key_name" {
+  description = "Nombre del key pair existente en AWS para acceso SSH"
+  type        = string
+  default     = "devops-unir"
+}

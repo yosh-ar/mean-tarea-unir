@@ -15,6 +15,7 @@ resource "aws_instance" "mongo" {
   instance_type          = var.tipo_instancia
   subnet_id              = var.subnet_privada_id
   vpc_security_group_ids = [var.sg_mongo_id]
+  key_name               = var.key_name
 
   # Instala y configura MongoDB 8.0 en el primer arranque
   user_data = file("${path.module}/scripts/mongo.sh")

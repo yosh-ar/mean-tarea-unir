@@ -1,0 +1,12 @@
+=== health ===
+{"status":"ok","mongo":"conectado"}
+=== nginx ===
+<!doctype html>
+<html lang="es" data-critters-container>
+<head>
+=== mongo 27017 ===
+Connection to 10.0.10.45 27017 port [tcp/*] succeeded!
+=== mongo 22 ===
+TIMEOUT: puerto 22 bloqueado por SG
+=== servicio ===
+active
