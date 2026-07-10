@@ -1,0 +1,13 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.tfvars
+
+# Node
+node_modules/
+.angular/
+
+# Word / macOS
+~$*.docx
+.DS_Store

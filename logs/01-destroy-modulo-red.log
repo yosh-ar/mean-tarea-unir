@@ -1,0 +1,306 @@
+[0m[1mmodule.red.aws_eip.nat: Refreshing state... [id=eipalloc-0f75753b26f56c381][0m
+[0m[1mmodule.red.aws_vpc.esta: Refreshing state... [id=vpc-0bdc5479fa731f90d][0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Refreshing state... [id=igw-0e2f7bcead8c49666][0m
+[0m[1mmodule.red.aws_subnet.privada: Refreshing state... [id=subnet-08418c527e6055856][0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Refreshing state... [id=subnet-071e4e6db59f33992][0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Refreshing state... [id=subnet-0ae9904f006c880fe][0m
+[0m[1mmodule.red.aws_route_table.publica: Refreshing state... [id=rtb-0cbd80c5b6a8195f0][0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Refreshing state... [id=nat-0c54d2caec1173459][0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Refreshing state... [id=rtbassoc-0c087e81e5073a924][0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Refreshing state... [id=rtbassoc-021bffdbbe19161ac][0m
+[0m[1mmodule.red.aws_route_table.privada: Refreshing state... [id=rtb-0951cf0952533bec9][0m
+[0m[1mmodule.red.aws_route_table_association.privada: Refreshing state... [id=rtbassoc-0ad0238e468308909][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.red.aws_eip.nat[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_eip" "nat" {
+      [31m-[0m[0m allocation_id            = "eipalloc-0f75753b26f56c381" [90m-> null[0m[0m
+      [31m-[0m[0m arn                      = "arn:aws:ec2:us-east-2:473427586366:elastic-ip/eipalloc-0f75753b26f56c381" [90m-> null[0m[0m
+      [31m-[0m[0m association_id           = "eipassoc-021343f92ce7d6d49" [90m-> null[0m[0m
+      [31m-[0m[0m domain                   = "vpc" [90m-> null[0m[0m
+      [31m-[0m[0m id                       = "eipalloc-0f75753b26f56c381" [90m-> null[0m[0m
+      [31m-[0m[0m network_border_group     = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m network_interface        = "eni-09f8007ba9bda9990" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns              = "ip-10-0-1-149.us-east-2.compute.internal" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip               = "10.0.1.149" [90m-> null[0m[0m
+      [31m-[0m[0m public_dns               = "ec2-3-136-121-220.us-east-2.compute.amazonaws.com" [90m-> null[0m[0m
+      [31m-[0m[0m public_ip                = "3.136.121.220" [90m-> null[0m[0m
+      [31m-[0m[0m public_ipv4_pool         = "amazon" [90m-> null[0m[0m
+      [31m-[0m[0m region                   = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                     = {
+          [31m-[0m[0m "Name" = "mean-eip-nat"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                 = {
+          [31m-[0m[0m "Name" = "mean-eip-nat"
+        } [90m-> null[0m[0m
+        [90m# (6 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_internet_gateway.esta[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_internet_gateway" "esta" {
+      [31m-[0m[0m arn      = "arn:aws:ec2:us-east-2:473427586366:internet-gateway/igw-0e2f7bcead8c49666" [90m-> null[0m[0m
+      [31m-[0m[0m id       = "igw-0e2f7bcead8c49666" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m region   = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags     = {
+          [31m-[0m[0m "Name" = "mean-igw"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all = {
+          [31m-[0m[0m "Name" = "mean-igw"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id   = "vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+    }
+
+[1m  # module.red.aws_nat_gateway.esta[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_nat_gateway" "esta" {
+      [31m-[0m[0m allocation_id                      = "eipalloc-0f75753b26f56c381" [90m-> null[0m[0m
+      [31m-[0m[0m association_id                     = "eipassoc-021343f92ce7d6d49" [90m-> null[0m[0m
+      [31m-[0m[0m availability_mode                  = "zonal" [90m-> null[0m[0m
+      [31m-[0m[0m connectivity_type                  = "public" [90m-> null[0m[0m
+      [31m-[0m[0m id                                 = "nat-0c54d2caec1173459" [90m-> null[0m[0m
+      [31m-[0m[0m network_interface_id               = "eni-09f8007ba9bda9990" [90m-> null[0m[0m
+      [31m-[0m[0m private_ip                         = "10.0.1.149" [90m-> null[0m[0m
+      [31m-[0m[0m public_ip                          = "3.136.121.220" [90m-> null[0m[0m
+      [31m-[0m[0m region                             = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m regional_nat_gateway_address       = [] [90m-> null[0m[0m
+      [31m-[0m[0m secondary_allocation_ids           = [] [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ip_address_count = 0 [90m-> null[0m[0m
+      [31m-[0m[0m secondary_private_ip_addresses     = [] [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id                          = "subnet-071e4e6db59f33992" [90m-> null[0m[0m
+      [31m-[0m[0m tags                               = {
+          [31m-[0m[0m "Name" = "mean-nat"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                           = {
+          [31m-[0m[0m "Name" = "mean-nat"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                             = "vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+    }
+
+[1m  # module.red.aws_route_table.privada[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table" "privada" {
+      [31m-[0m[0m arn              = "arn:aws:ec2:us-east-2:473427586366:route-table/rtb-0951cf0952533bec9" [90m-> null[0m[0m
+      [31m-[0m[0m id               = "rtb-0951cf0952533bec9" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id         = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m propagating_vgws = [] [90m-> null[0m[0m
+      [31m-[0m[0m region           = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route            = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_block                 = "0.0.0.0/0"
+              [31m-[0m[0m nat_gateway_id             = "nat-0c54d2caec1173459"
+                [90m# (12 unchanged attributes hidden)[0m[0m
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m tags             = {
+          [31m-[0m[0m "Name" = "mean-rt-privada"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all         = {
+          [31m-[0m[0m "Name" = "mean-rt-privada"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id           = "vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+    }
+
+[1m  # module.red.aws_route_table.publica[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table" "publica" {
+      [31m-[0m[0m arn              = "arn:aws:ec2:us-east-2:473427586366:route-table/rtb-0cbd80c5b6a8195f0" [90m-> null[0m[0m
+      [31m-[0m[0m id               = "rtb-0cbd80c5b6a8195f0" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id         = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m propagating_vgws = [] [90m-> null[0m[0m
+      [31m-[0m[0m region           = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route            = [
+          [31m-[0m[0m {
+              [31m-[0m[0m cidr_block                 = "0.0.0.0/0"
+              [31m-[0m[0m gateway_id                 = "igw-0e2f7bcead8c49666"
+                [90m# (12 unchanged attributes hidden)[0m[0m
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m tags             = {
+          [31m-[0m[0m "Name" = "mean-rt-publica"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all         = {
+          [31m-[0m[0m "Name" = "mean-rt-publica"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id           = "vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+    }
+
+[1m  # module.red.aws_route_table_association.privada[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "privada" {
+      [31m-[0m[0m id             = "rtbassoc-0ad0238e468308909" [90m-> null[0m[0m
+      [31m-[0m[0m region         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-0951cf0952533bec9" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-08418c527e6055856" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_route_table_association.publicas[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "publicas" {
+      [31m-[0m[0m id             = "rtbassoc-021bffdbbe19161ac" [90m-> null[0m[0m
+      [31m-[0m[0m region         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-0cbd80c5b6a8195f0" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-071e4e6db59f33992" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_route_table_association.publicas[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_route_table_association" "publicas" {
+      [31m-[0m[0m id             = "rtbassoc-0c087e81e5073a924" [90m-> null[0m[0m
+      [31m-[0m[0m region         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m route_table_id = "rtb-0cbd80c5b6a8195f0" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_id      = "subnet-0ae9904f006c880fe" [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_subnet.privada[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "privada" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:us-east-2:473427586366:subnet/subnet-08418c527e6055856" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "us-east-2a" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "use2-az1" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.10.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-08418c527e6055856" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = false [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m region                                         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "mean-privada"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "mean-privada"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_subnet.publicas[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "publicas" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:us-east-2:473427586366:subnet/subnet-071e4e6db59f33992" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "us-east-2a" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "use2-az1" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.1.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-071e4e6db59f33992" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = true [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m region                                         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "mean-publica-1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "mean-publica-1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_subnet.publicas[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "publicas" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:us-east-2:473427586366:subnet/subnet-0ae9904f006c880fe" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "us-east-2b" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "use2-az2" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.2.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-0ae9904f006c880fe" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = true [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m region                                         = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Name" = "mean-publica-2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Name" = "mean-publica-2"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.red.aws_vpc.esta[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc" "esta" {
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:us-east-2:473427586366:vpc/vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+      [31m-[0m[0m assign_generated_ipv6_cidr_block     = false [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                           = "10.0.0.0/16" [90m-> null[0m[0m
+      [31m-[0m[0m default_network_acl_id               = "acl-023cf736ae607bf35" [90m-> null[0m[0m
+      [31m-[0m[0m default_route_table_id               = "rtb-0acd0ad4bb908de19" [90m-> null[0m[0m
+      [31m-[0m[0m default_security_group_id            = "sg-0761cb1cde2aef927" [90m-> null[0m[0m
+      [31m-[0m[0m dhcp_options_id                      = "dopt-02718ab1ff04574a7" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_hostnames                 = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_support                   = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_network_address_usage_metrics = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "vpc-0bdc5479fa731f90d" [90m-> null[0m[0m
+      [31m-[0m[0m instance_tenancy                     = "default" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_netmask_length                  = 0 [90m-> null[0m[0m
+      [31m-[0m[0m main_route_table_id                  = "rtb-0acd0ad4bb908de19" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                             = "473427586366" [90m-> null[0m[0m
+      [31m-[0m[0m region                               = "us-east-2" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Name" = "mean-vpc"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Name" = "mean-vpc"
+        } [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1mPlan:[0m [0m0 to add, 0 to change, 12 to destroy.
+[0m[1m
+Do you really want to destroy all resources?[0m
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  [1mEnter a value:[0m [0m
+[0m[1mmodule.red.aws_route_table_association.privada: Destroying... [id=rtbassoc-0ad0238e468308909][0m[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Destroying... [id=rtbassoc-0c087e81e5073a924][0m[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Destroying... [id=rtbassoc-021bffdbbe19161ac][0m[0m
+[0m[1mmodule.red.aws_route_table_association.privada: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_subnet.privada: Destroying... [id=subnet-08418c527e6055856][0m[0m
+[0m[1mmodule.red.aws_route_table.privada: Destroying... [id=rtb-0951cf0952533bec9][0m[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_route_table.publica: Destroying... [id=rtb-0cbd80c5b6a8195f0][0m[0m
+[0m[1mmodule.red.aws_subnet.privada: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_route_table.privada: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Destroying... [id=nat-0c54d2caec1173459][0m[0m
+[0m[1mmodule.red.aws_route_table.publica: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0c54d2caec1173459, 00m10s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0c54d2caec1173459, 00m20s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0c54d2caec1173459, 00m30s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0c54d2caec1173459, 00m40s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0c54d2caec1173459, 00m50s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still destroying... [id=nat-0c54d2caec1173459, 01m00s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Destruction complete after 1m1s[0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Destroying... [id=igw-0e2f7bcead8c49666][0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Destroying... [id=subnet-0ae9904f006c880fe][0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Destroying... [id=subnet-071e4e6db59f33992][0m[0m
+[0m[1mmodule.red.aws_eip.nat: Destroying... [id=eipalloc-0f75753b26f56c381][0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_vpc.esta: Destroying... [id=vpc-0bdc5479fa731f90d][0m[0m
+[0m[1mmodule.red.aws_eip.nat: Destruction complete after 1s[0m
+[0m[1mmodule.red.aws_vpc.esta: Destruction complete after 1s[0m
+[0m[1m[32m
+Destroy complete! Resources: 12 destroyed.[0m

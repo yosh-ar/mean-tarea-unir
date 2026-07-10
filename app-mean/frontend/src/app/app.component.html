@@ -1,0 +1,23 @@
+<h1>Tareas</h1>
+
+<div class="nueva-tarea">
+  <input
+    type="text"
+    [(ngModel)]="nuevoTitulo"
+    (keyup.enter)="crearTarea()"
+    placeholder="Nueva tarea"
+  />
+  <button (click)="crearTarea()">Agregar</button>
+</div>
+
+<ul>
+  <li *ngFor="let tarea of tareas">
+    <input
+      type="checkbox"
+      [checked]="tarea.completada"
+      (change)="toggleCompletada(tarea)"
+    />
+    <span [class.completada]="tarea.completada">{{ tarea.titulo }}</span>
+    <button (click)="borrarTarea(tarea)">Borrar</button>
+  </li>
+</ul>

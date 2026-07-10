@@ -1,0 +1,304 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.red.aws_eip.nat[0m will be created
+[0m  [32m+[0m[0m resource "aws_eip" "nat" {
+      [32m+[0m[0m allocation_id        = (known after apply)
+      [32m+[0m[0m arn                  = (known after apply)
+      [32m+[0m[0m association_id       = (known after apply)
+      [32m+[0m[0m carrier_ip           = (known after apply)
+      [32m+[0m[0m customer_owned_ip    = (known after apply)
+      [32m+[0m[0m domain               = "vpc"
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m instance             = (known after apply)
+      [32m+[0m[0m ipam_pool_id         = (known after apply)
+      [32m+[0m[0m network_border_group = (known after apply)
+      [32m+[0m[0m network_interface    = (known after apply)
+      [32m+[0m[0m private_dns          = (known after apply)
+      [32m+[0m[0m private_ip           = (known after apply)
+      [32m+[0m[0m ptr_record           = (known after apply)
+      [32m+[0m[0m public_dns           = (known after apply)
+      [32m+[0m[0m public_ip            = (known after apply)
+      [32m+[0m[0m public_ipv4_pool     = (known after apply)
+      [32m+[0m[0m region               = "us-east-2"
+      [32m+[0m[0m tags                 = {
+          [32m+[0m[0m "Name" = "mean-eip-nat"
+        }
+      [32m+[0m[0m tags_all             = {
+          [32m+[0m[0m "Name" = "mean-eip-nat"
+        }
+    }
+
+[1m  # module.red.aws_internet_gateway.esta[0m will be created
+[0m  [32m+[0m[0m resource "aws_internet_gateway" "esta" {
+      [32m+[0m[0m arn      = (known after apply)
+      [32m+[0m[0m id       = (known after apply)
+      [32m+[0m[0m owner_id = (known after apply)
+      [32m+[0m[0m region   = "us-east-2"
+      [32m+[0m[0m tags     = {
+          [32m+[0m[0m "Name" = "mean-igw"
+        }
+      [32m+[0m[0m tags_all = {
+          [32m+[0m[0m "Name" = "mean-igw"
+        }
+      [32m+[0m[0m vpc_id   = (known after apply)
+    }
+
+[1m  # module.red.aws_nat_gateway.esta[0m will be created
+[0m  [32m+[0m[0m resource "aws_nat_gateway" "esta" {
+      [32m+[0m[0m allocation_id                      = (known after apply)
+      [32m+[0m[0m association_id                     = (known after apply)
+      [32m+[0m[0m auto_provision_zones               = (known after apply)
+      [32m+[0m[0m auto_scaling_ips                   = (known after apply)
+      [32m+[0m[0m availability_mode                  = (known after apply)
+      [32m+[0m[0m connectivity_type                  = "public"
+      [32m+[0m[0m id                                 = (known after apply)
+      [32m+[0m[0m network_interface_id               = (known after apply)
+      [32m+[0m[0m private_ip                         = (known after apply)
+      [32m+[0m[0m public_ip                          = (known after apply)
+      [32m+[0m[0m region                             = "us-east-2"
+      [32m+[0m[0m regional_nat_gateway_address       = (known after apply)
+      [32m+[0m[0m regional_nat_gateway_auto_mode     = (known after apply)
+      [32m+[0m[0m route_table_id                     = (known after apply)
+      [32m+[0m[0m secondary_allocation_ids           = (known after apply)
+      [32m+[0m[0m secondary_private_ip_address_count = (known after apply)
+      [32m+[0m[0m secondary_private_ip_addresses     = (known after apply)
+      [32m+[0m[0m subnet_id                          = (known after apply)
+      [32m+[0m[0m tags                               = {
+          [32m+[0m[0m "Name" = "mean-nat"
+        }
+      [32m+[0m[0m tags_all                           = {
+          [32m+[0m[0m "Name" = "mean-nat"
+        }
+      [32m+[0m[0m vpc_id                             = (known after apply)
+    }
+
+[1m  # module.red.aws_route_table.privada[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "privada" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m region           = "us-east-2"
+      [32m+[0m[0m route            = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_block                 = "0.0.0.0/0"
+              [32m+[0m[0m nat_gateway_id             = (known after apply)
+                [90m# (12 unchanged attributes hidden)[0m[0m
+            },
+        ]
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "mean-rt-privada"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "mean-rt-privada"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # module.red.aws_route_table.publica[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "publica" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m region           = "us-east-2"
+      [32m+[0m[0m route            = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_block                 = "0.0.0.0/0"
+              [32m+[0m[0m gateway_id                 = (known after apply)
+                [90m# (12 unchanged attributes hidden)[0m[0m
+            },
+        ]
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "mean-rt-publica"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "mean-rt-publica"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # module.red.aws_route_table_association.privada[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "privada" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-2"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # module.red.aws_route_table_association.publicas[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "publicas" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-2"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # module.red.aws_route_table_association.publicas[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "publicas" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m region         = "us-east-2"
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # module.red.aws_subnet.privada[0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "privada" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-2a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.10.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                                = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-2"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "mean-privada"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "mean-privada"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # module.red.aws_subnet.publicas[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "publicas" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-2a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.1.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                                = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-2"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "mean-publica-1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "mean-publica-1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # module.red.aws_subnet.publicas[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "publicas" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "us-east-2b"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.2.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                                = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m region                                         = "us-east-2"
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name" = "mean-publica-2"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name" = "mean-publica-2"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # module.red.aws_vpc.esta[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc" "esta" {
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m cidr_block                           = "10.0.0.0/16"
+      [32m+[0m[0m default_network_acl_id               = (known after apply)
+      [32m+[0m[0m default_route_table_id               = (known after apply)
+      [32m+[0m[0m default_security_group_id            = (known after apply)
+      [32m+[0m[0m dhcp_options_id                      = (known after apply)
+      [32m+[0m[0m enable_dns_hostnames                 = true
+      [32m+[0m[0m enable_dns_support                   = true
+      [32m+[0m[0m enable_network_address_usage_metrics = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_tenancy                     = "default"
+      [32m+[0m[0m ipv6_association_id                  = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                      = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_network_border_group = (known after apply)
+      [32m+[0m[0m main_route_table_id                  = (known after apply)
+      [32m+[0m[0m owner_id                             = (known after apply)
+      [32m+[0m[0m region                               = "us-east-2"
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name" = "mean-vpc"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name" = "mean-vpc"
+        }
+    }
+
+[1mPlan:[0m [0m12 to add, 0 to change, 0 to destroy.
+[0m[1m
+Do you want to perform these actions?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0m
+[0m[1mmodule.red.aws_eip.nat: Creating...[0m[0m
+[0m[1mmodule.red.aws_vpc.esta: Creating...[0m[0m
+[0m[1mmodule.red.aws_eip.nat: Creation complete after 2s [id=eipalloc-0f75753b26f56c381][0m
+[0m[1mmodule.red.aws_vpc.esta: Creation complete after 3s [id=vpc-0bdc5479fa731f90d][0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Creating...[0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Creating...[0m[0m
+[0m[1mmodule.red.aws_subnet.privada: Creating...[0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Creating...[0m[0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Creation complete after 1s [id=igw-0e2f7bcead8c49666][0m
+[0m[1mmodule.red.aws_route_table.publica: Creating...[0m[0m
+[0m[1mmodule.red.aws_subnet.privada: Creation complete after 1s [id=subnet-08418c527e6055856][0m
+[0m[1mmodule.red.aws_route_table.publica: Creation complete after 1s [id=rtb-0cbd80c5b6a8195f0][0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Still creating... [00m10s elapsed][0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Still creating... [00m10s elapsed][0m[0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Creation complete after 12s [id=subnet-0ae9904f006c880fe][0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Creation complete after 12s [id=subnet-071e4e6db59f33992][0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Creating...[0m[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Creating...[0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Creating...[0m[0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Creation complete after 0s [id=rtbassoc-021bffdbbe19161ac][0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Creation complete after 0s [id=rtbassoc-0c087e81e5073a924][0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [00m10s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [00m20s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [00m30s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [00m40s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [00m50s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [01m00s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [01m10s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [01m20s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [01m30s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [01m40s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [01m50s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Still creating... [02m00s elapsed][0m[0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Creation complete after 2m5s [id=nat-0c54d2caec1173459][0m
+[0m[1mmodule.red.aws_route_table.privada: Creating...[0m[0m
+[0m[1mmodule.red.aws_route_table.privada: Creation complete after 1s [id=rtb-0951cf0952533bec9][0m
+[0m[1mmodule.red.aws_route_table_association.privada: Creating...[0m[0m
+[0m[1mmodule.red.aws_route_table_association.privada: Creation complete after 1s [id=rtbassoc-0ad0238e468308909][0m
+[0m[1m[32m
+Apply complete! Resources: 12 added, 0 changed, 0 destroyed.[0m

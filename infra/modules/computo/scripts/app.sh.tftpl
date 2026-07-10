@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Despliega la aplicación MEAN (backend Node + frontend estático) sobre la AMI base.
+# Reemplaza la app de demo que trae la AMI. Valores inyectados por templatefile():
+# mongo_ip, puerto_app, repo_url.
+exec > /var/log/user-data.log 2>&1
+set -x
+
+# Instala git para clonar el repositorio de la aplicación
+apt-get update && apt-get install -y git
+
+# Clona el repositorio con el código de la aplicación
+git clone ${repo_url} /opt/repo
+
+# Instala el backend en /opt/app, reemplazando la app de demo de la AMI
+mkdir -p /opt/app && cp -r /opt/repo/app-mean/backend/* /opt/app/
+cd /opt/app && npm install --omit=dev
+
+# Publica el frontend compilado de Angular en la raíz web de Nginx
+# (ajustar la ruta si el build de Angular genera otra estructura de carpetas)
+mkdir -p /var/www/html && cp -r /opt/repo/app-mean/frontend/dist/*/browser/* /var/www/html/
+
+# Instala la configuración de Nginx del proyecto
+cp /opt/repo/app-mean/nginx.conf /etc/nginx/sites-available/default
+
+# Escribe la configuración de entorno que consume el servicio 'app'
+cat > /etc/default/app <<EOF
+MONGO_URI=mongodb://${mongo_ip}:27017/tareas
+PORT=${puerto_app}
+EOF
+
+# Sobrescribe el unit de systemd para apuntar al backend real (no a la demo)
+cat > /etc/systemd/system/app.service <<'EOF'
+[Unit]
+Description=Backend MEAN (Node + Express)
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/default/app
+ExecStart=/usr/bin/node /opt/app/src/index.js
+WorkingDirectory=/opt/app
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Recarga systemd y arranca la app con la nueva configuración
+systemctl daemon-reload
+systemctl enable app
+systemctl restart app
+
+# Valida la configuración de Nginx antes de reiniciarlo
+nginx -t
+systemctl restart nginx
