@@ -37,3 +37,12 @@ module "computo" {
 
   depends_on = [module.red]
 }
+module "balanceador" {
+  source = "./modules/balanceador"
+
+  nombre_proyecto      = var.nombre_proyecto
+  vpc_id               = module.red.vpc_id
+  subnets_publicas_ids = module.red.subnets_publicas_ids
+  sg_alb_id            = module.seguridad.sg_alb_id
+  app_instance_id      = module.computo.app_instance_id
+}

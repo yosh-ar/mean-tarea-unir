@@ -1,0 +1,8 @@
+=== Frontend via ALB ===
+<!doctype html>
+<html lang="es" data-critters-container>
+<head>
+  <meta charset="utf-8">
+  <title>Tareas</title>
+=== API health via ALB ===
+{"status":"ok","mongo":"conectado"}
