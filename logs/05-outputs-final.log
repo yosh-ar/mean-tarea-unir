@@ -1,0 +1,5 @@
+dns_balanceador = "mean-alb-242671233.us-east-2.elb.amazonaws.com"
+ip_privada_app = "10.0.1.152"
+ip_privada_mongo = "10.0.10.231"
+ip_publica_app = "3.23.92.129"
+ip_publica_nat_mongo = "13.58.238.38"

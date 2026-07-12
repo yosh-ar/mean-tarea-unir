@@ -1,0 +1,57 @@
+[0m[1mmodule.red.aws_eip.nat: Refreshing state... [id=eipalloc-0647172d3370f3046][0m
+[0m[1mmodule.red.aws_vpc.esta: Refreshing state... [id=vpc-0baf44d6da1105ecc][0m
+[0m[1mmodule.red.aws_internet_gateway.esta: Refreshing state... [id=igw-0663c95e1c9f3a431][0m
+[0m[1mmodule.red.aws_subnet.privada: Refreshing state... [id=subnet-09391fc6e45e64b6a][0m
+[0m[1mmodule.red.aws_subnet.publicas[1]: Refreshing state... [id=subnet-0ad0b1d78050f49ca][0m
+[0m[1mmodule.red.aws_subnet.publicas[0]: Refreshing state... [id=subnet-073c1d839e98e9f23][0m
+[0m[1mmodule.seguridad.aws_security_group.app: Refreshing state... [id=sg-0e249a6612220c070][0m
+[0m[1mmodule.seguridad.aws_security_group.alb: Refreshing state... [id=sg-01d72d1a985457182][0m
+[0m[1mmodule.seguridad.aws_security_group.mongo: Refreshing state... [id=sg-0f322171ddb0d49a2][0m
+[0m[1mmodule.balanceador.aws_lb_target_group.app: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-2:473427586366:targetgroup/mean-tg/1384ed8180faf021][0m
+[0m[1mmodule.red.aws_route_table.publica: Refreshing state... [id=rtb-0018fb76ef496f51f][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.app_todo: Refreshing state... [id=sgr-0ecf853b3d5af1126][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.app_ssh: Refreshing state... [id=sgr-076611e7a4fe91c64][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.app_http_desde_alb: Refreshing state... [id=sgr-085aaf190281eb13f][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.alb_todo: Refreshing state... [id=sgr-08f8e69d98ea808cd][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.alb_http: Refreshing state... [id=sgr-0a27169a7244f8904][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_egress_rule.mongo_todo: Refreshing state... [id=sgr-0fb197a4def9a3a9e][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.mongo_desde_app: Refreshing state... [id=sgr-0ad417534b5921088][0m
+[0m[1mmodule.seguridad.aws_vpc_security_group_ingress_rule.mongo_ssh_desde_app: Refreshing state... [id=sgr-0ab3a11963fde5bb7][0m
+[0m[1mmodule.red.aws_nat_gateway.esta: Refreshing state... [id=nat-0edaa8a08f337e121][0m
+[0m[1mmodule.red.aws_route_table_association.publicas[0]: Refreshing state... [id=rtbassoc-093c80a1afdc90fe9][0m
+[0m[1mmodule.red.aws_route_table_association.publicas[1]: Refreshing state... [id=rtbassoc-07452806044f781cf][0m
+[0m[1mmodule.balanceador.aws_lb.app: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-2:473427586366:loadbalancer/app/mean-alb/5a6eb8fa6b9c1ed6][0m
+[0m[1mmodule.red.aws_route_table.privada: Refreshing state... [id=rtb-082c46166a0d6e84b][0m
+[0m[1mmodule.red.aws_route_table_association.privada: Refreshing state... [id=rtbassoc-0f7b88f61dfa90a61][0m
+[0m[1mmodule.computo.data.aws_ami.app: Reading...[0m[0m
+[0m[1mmodule.balanceador.aws_lb_listener.http: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-2:473427586366:listener/app/mean-alb/5a6eb8fa6b9c1ed6/6bdddda4a247369b][0m
+[0m[1mmodule.computo.data.aws_ami.app: Read complete after 0s [id=ami-0e8a118460995ddb2][0m
+[0m[1mmodule.computo.aws_instance.mongo: Refreshing state... [id=i-05c13114569adf841][0m
+[0m[1mmodule.computo.aws_instance.app: Refreshing state... [id=i-09b29e639f88c50a6][0m
+[0m[1mmodule.balanceador.aws_lb_target_group_attachment.app: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-2:473427586366:targetgroup/mean-tg/1384ed8180faf021,i-09b29e639f88c50a6,80][0m
+
+Changes to Outputs:
+  [32m+[0m[0m dns_balanceador      = "mean-alb-242671233.us-east-2.elb.amazonaws.com"
+  [32m+[0m[0m ip_privada_app       = "10.0.1.152"
+  [32m+[0m[0m ip_privada_mongo     = "10.0.10.231"
+  [32m+[0m[0m ip_publica_app       = "3.23.92.129"
+  [32m+[0m[0m ip_publica_nat_mongo = "13.58.238.38"
+
+You can apply this plan to save these new output values to the Terraform
+state, without changing any real infrastructure.
+[0m[1m
+Do you want to perform these actions?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0m
+[0m[1m[32m
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+[0mdns_balanceador = "mean-alb-242671233.us-east-2.elb.amazonaws.com"
+ip_privada_app = "10.0.1.152"
+ip_privada_mongo = "10.0.10.231"
+ip_publica_app = "3.23.92.129"
+ip_publica_nat_mongo = "13.58.238.38"
