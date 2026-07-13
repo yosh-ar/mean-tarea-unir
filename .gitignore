@@ -8,6 +8,13 @@
 node_modules/
 .angular/
 
-# Word / macOS
+# Documentos de Word (informe y temporales)
+*.doc
+*.docx
 ~$*.docx
+
+# Capturas de pantalla de la evidencia
+docs/Capturas finales/
+
+# macOS
 .DS_Store

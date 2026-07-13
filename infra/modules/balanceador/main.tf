@@ -1,4 +1,3 @@
-# Balanceador de aplicación (ALB) público, distribuido en las subredes públicas
 resource "aws_lb" "app" {
   name               = "${var.nombre_proyecto}-alb"
   load_balancer_type = "application"
@@ -11,7 +10,8 @@ resource "aws_lb" "app" {
   }
 }
 
-# Target group HTTP en el puerto 80 con health check sobre la raíz de la app
+# El health check pega a "/" (el index de Angular servido por Nginx). Si la
+# instancia aparece unhealthy, revisar primero /var/log/user-data.log en la app.
 resource "aws_lb_target_group" "app" {
   name        = "${var.nombre_proyecto}-tg"
   port        = 80
@@ -32,14 +32,15 @@ resource "aws_lb_target_group" "app" {
   }
 }
 
-# Registra la instancia de la app en el target group en el puerto 80
+# Attachment manual de una sola instancia. Para escalar en serio habría que
+# pasar a un Autoscaling Group y dejar que él registre los targets.
 resource "aws_lb_target_group_attachment" "app" {
   target_group_arn = aws_lb_target_group.app.arn
   target_id        = var.app_instance_id
   port             = 80
 }
 
-# Listener HTTP en el puerto 80 que reenvía el tráfico al target group
+# Solo HTTP en el 80; no hay certificado ni listener 443 en esta práctica.
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.app.arn
   port              = 80

@@ -1,4 +1,8 @@
-# Security group del balanceador de carga (ALB), expuesto a Internet en HTTP
+# Cadena de acceso en capas: Internet -> ALB (80) -> app (80) -> mongo (27017).
+# Cada SG solo acepta tráfico del SG anterior; ninguna regla de mongo mira a Internet.
+
+# name_prefix + create_before_destroy: permite que Terraform reemplace un SG
+# sin chocar con el nombre del que todavía está en uso.
 resource "aws_security_group" "alb" {
   name_prefix = "${var.nombre_proyecto}-sg-alb-"
   description = "SG del ALB: permite HTTP entrante desde Internet"
@@ -13,7 +17,6 @@ resource "aws_security_group" "alb" {
   }
 }
 
-# Security group de la aplicación, solo recibe tráfico desde el ALB (y SSH de administración)
 resource "aws_security_group" "app" {
   name_prefix = "${var.nombre_proyecto}-sg-app-"
   description = "SG de la app: recibe trafico desde el ALB y SSH de administracion"
@@ -28,7 +31,6 @@ resource "aws_security_group" "app" {
   }
 }
 
-# Security group de MongoDB, solo recibe tráfico desde la aplicación
 resource "aws_security_group" "mongo" {
   name_prefix = "${var.nombre_proyecto}-sg-mongo-"
   description = "SG de MongoDB: recibe trafico solo desde la app"
@@ -43,7 +45,6 @@ resource "aws_security_group" "mongo" {
   }
 }
 
-# Ingress ALB: HTTP (80) abierto a todo Internet
 resource "aws_vpc_security_group_ingress_rule" "alb_http" {
   security_group_id = aws_security_group.alb.id
   description       = "HTTP entrante desde Internet"
@@ -53,7 +54,8 @@ resource "aws_vpc_security_group_ingress_rule" "alb_http" {
   cidr_ipv4         = "0.0.0.0/0"
 }
 
-# Ingress app: HTTP (80) únicamente desde el SG del ALB; Nginx hace proxy interno a Node
+# La app solo escucha al ALB; nadie llega directo a la instancia por HTTP
+# aunque tenga IP pública. Nginx hace el proxy interno hacia Node.
 resource "aws_vpc_security_group_ingress_rule" "app_http_desde_alb" {
   security_group_id            = aws_security_group.app.id
   description                  = "HTTP (80) solo desde el ALB; Nginx redirige a Node en localhost"
@@ -63,7 +65,8 @@ resource "aws_vpc_security_group_ingress_rule" "app_http_desde_alb" {
   referenced_security_group_id = aws_security_group.alb.id
 }
 
-# Ingress app: SSH (22) desde el CIDR de administración. En producción debe restringirse.
+# OJO: con el default de cidr_ssh (0.0.0.0/0) esto deja SSH abierto a todo
+# Internet. Para cualquier uso serio, pasar la IP de administración en cidr_ssh.
 resource "aws_vpc_security_group_ingress_rule" "app_ssh" {
   security_group_id = aws_security_group.app.id
   description       = "SSH de administracion. En produccion restringir cidr_ssh."
@@ -73,7 +76,6 @@ resource "aws_vpc_security_group_ingress_rule" "app_ssh" {
   cidr_ipv4         = var.cidr_ssh
 }
 
-# Ingress mongo: puerto de MongoDB únicamente desde el SG de la app
 resource "aws_vpc_security_group_ingress_rule" "mongo_desde_app" {
   security_group_id            = aws_security_group.mongo.id
   description                  = "Trafico de MongoDB solo desde la app"
@@ -83,7 +85,8 @@ resource "aws_vpc_security_group_ingress_rule" "mongo_desde_app" {
   referenced_security_group_id = aws_security_group.app.id
 }
 
-# Ingress mongo: SSH (22) únicamente desde el SG de la app, para depuración vía bastión
+# Patrón bastión: para entrar por SSH a mongo hay que saltar primero por la
+# instancia de app; la subred privada no tiene otra puerta.
 resource "aws_vpc_security_group_ingress_rule" "mongo_ssh_desde_app" {
   security_group_id            = aws_security_group.mongo.id
   description                  = "SSH administrativo solo desde la instancia de app (patron bastion)"
@@ -93,7 +96,6 @@ resource "aws_vpc_security_group_ingress_rule" "mongo_ssh_desde_app" {
   referenced_security_group_id = aws_security_group.app.id
 }
 
-# Egress ALB: salida sin restricción a todo Internet
 resource "aws_vpc_security_group_egress_rule" "alb_todo" {
   security_group_id = aws_security_group.alb.id
   description       = "Salida sin restriccion"
@@ -101,7 +103,6 @@ resource "aws_vpc_security_group_egress_rule" "alb_todo" {
   cidr_ipv4         = "0.0.0.0/0"
 }
 
-# Egress app: salida sin restricción a todo Internet
 resource "aws_vpc_security_group_egress_rule" "app_todo" {
   security_group_id = aws_security_group.app.id
   description       = "Salida sin restriccion"
@@ -109,7 +110,6 @@ resource "aws_vpc_security_group_egress_rule" "app_todo" {
   cidr_ipv4         = "0.0.0.0/0"
 }
 
-# Egress mongo: salida sin restricción a todo Internet
 resource "aws_vpc_security_group_egress_rule" "mongo_todo" {
   security_group_id = aws_security_group.mongo.id
   description       = "Salida sin restriccion"

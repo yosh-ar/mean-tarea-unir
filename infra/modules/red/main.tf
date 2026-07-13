@@ -1,4 +1,3 @@
-# VPC principal que contiene toda la red del proyecto, con resolución DNS habilitada
 resource "aws_vpc" "esta" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
@@ -9,7 +8,7 @@ resource "aws_vpc" "esta" {
   }
 }
 
-# Subredes públicas, una por cada AZ, con asignación automática de IP pública a las instancias
+# Una subred pública por AZ: el ALB exige al menos dos zonas distintas.
 resource "aws_subnet" "publicas" {
   count                   = length(var.cidrs_publicas)
   vpc_id                  = aws_vpc.esta.id
@@ -22,7 +21,7 @@ resource "aws_subnet" "publicas" {
   }
 }
 
-# Subred privada ubicada en la primera AZ, sin acceso entrante directo desde Internet
+# Aquí vive MongoDB: sin ruta de entrada desde Internet, solo salida vía NAT.
 resource "aws_subnet" "privada" {
   vpc_id            = aws_vpc.esta.id
   cidr_block        = var.cidr_privada
@@ -33,7 +32,6 @@ resource "aws_subnet" "privada" {
   }
 }
 
-# Internet Gateway que da salida y entrada a Internet a las subredes públicas
 resource "aws_internet_gateway" "esta" {
   vpc_id = aws_vpc.esta.id
 
@@ -42,7 +40,6 @@ resource "aws_internet_gateway" "esta" {
   }
 }
 
-# IP elástica que se asocia al NAT Gateway para su dirección pública fija
 resource "aws_eip" "nat" {
   domain = "vpc"
 
@@ -51,7 +48,8 @@ resource "aws_eip" "nat" {
   }
 }
 
-# NAT Gateway en la primera subred pública, permite salida a Internet a la subred privada
+# Un solo NAT en la primera AZ para abaratar (cada NAT + EIP tiene coste fijo por hora).
+# El compromiso: si esa zona cae, la subred privada se queda sin salida a Internet.
 resource "aws_nat_gateway" "esta" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.publicas[0].id
@@ -60,11 +58,11 @@ resource "aws_nat_gateway" "esta" {
     Name = "${var.nombre_proyecto}-nat"
   }
 
-  # El NAT Gateway requiere que el IGW ya exista para funcionar
+  # Terraform no infiere este orden por las referencias y sin el IGW adjunto
+  # la creación del NAT falla de forma intermitente.
   depends_on = [aws_internet_gateway.esta]
 }
 
-# Tabla de rutas pública que enruta todo el tráfico externo hacia el Internet Gateway
 resource "aws_route_table" "publica" {
   vpc_id = aws_vpc.esta.id
 
@@ -78,14 +76,12 @@ resource "aws_route_table" "publica" {
   }
 }
 
-# Asociación de la tabla de rutas pública a ambas subredes públicas
 resource "aws_route_table_association" "publicas" {
   count          = length(aws_subnet.publicas)
   subnet_id      = aws_subnet.publicas[count.index].id
   route_table_id = aws_route_table.publica.id
 }
 
-# Tabla de rutas privada que enruta todo el tráfico externo hacia el NAT Gateway
 resource "aws_route_table" "privada" {
   vpc_id = aws_vpc.esta.id
 
@@ -99,7 +95,6 @@ resource "aws_route_table" "privada" {
   }
 }
 
-# Asociación de la tabla de rutas privada a la subred privada
 resource "aws_route_table_association" "privada" {
   subnet_id      = aws_subnet.privada.id
   route_table_id = aws_route_table.privada.id

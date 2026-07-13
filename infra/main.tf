@@ -1,3 +1,5 @@
+# Sin backend remoto: el tfstate queda en local. Si esto lo va a tocar más de
+# una persona, migrar el estado a S3 antes de seguir trabajando.
 terraform {
   required_version = ">= 1.7"
 
@@ -24,6 +26,8 @@ module "seguridad" {
   nombre_proyecto = var.nombre_proyecto
   vpc_id          = module.red.vpc_id
 }
+# Ojo: este módulo busca una AMI propia llamada "nodejs-nginx-*" y un key pair
+# ya creado en la cuenta. Sin esos dos prerrequisitos el plan falla (ver README).
 module "computo" {
   source = "./modules/computo"
 

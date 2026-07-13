@@ -1,4 +1,6 @@
-# AMI más reciente construida con Packer (Ubuntu 22.04 + Node 20, Nginx y unit systemd 'app')
+# PRERREQUISITO: este data source busca la AMI construida con Packer
+# (Ubuntu 22.04 + Node 20 + Nginx + unit systemd "app") en la cuenta propia.
+# Si no existe ninguna AMI "nodejs-nginx-*", el plan falla aquí mismo.
 data "aws_ami" "app" {
   owners      = ["self"]
   most_recent = true
@@ -9,7 +11,6 @@ data "aws_ami" "app" {
   }
 }
 
-# Instancia de MongoDB en la subred privada, sin IP pública, alcanzable solo desde la app
 resource "aws_instance" "mongo" {
   ami                    = data.aws_ami.app.id
   instance_type          = var.tipo_instancia
@@ -17,7 +18,7 @@ resource "aws_instance" "mongo" {
   vpc_security_group_ids = [var.sg_mongo_id]
   key_name               = var.key_name
 
-  # Instala y configura MongoDB 8.0 en el primer arranque
+  # Instala MongoDB 8.0 en el primer arranque; tarda unos minutos en estar listo
   user_data = file("${path.module}/scripts/mongo.sh")
 
   tags = {
@@ -25,7 +26,6 @@ resource "aws_instance" "mongo" {
   }
 }
 
-# Instancia de la aplicación en la subred pública, con IP pública y acceso SSH por key pair
 resource "aws_instance" "app" {
   ami                         = data.aws_ami.app.id
   instance_type               = var.tipo_instancia
@@ -34,7 +34,8 @@ resource "aws_instance" "app" {
   associate_public_ip_address = true
   key_name                    = var.key_name
 
-  # Despliega la app apuntando a la IP privada de MongoDB en el primer arranque
+  # Al referenciar la IP privada de mongo, Terraform crea mongo primero.
+  # El script clona repo_url y despliega backend + frontend sobre la AMI base.
   user_data = templatefile("${path.module}/scripts/app.sh.tftpl", {
     mongo_ip   = aws_instance.mongo.private_ip
     puerto_app = var.puerto_app
